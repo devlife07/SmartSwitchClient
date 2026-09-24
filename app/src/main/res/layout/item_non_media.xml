@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/ic_corner_round"
+    android:paddingVertical="@dimen/_10sdp"
+    android:paddingHorizontal="@dimen/_8sdp">
+
+    <ImageView
+        android:id="@+id/imgItem"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_splash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:gravity="start"
+        android:textSize="@dimen/_14sdp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgItem"
+        app:layout_constraintEnd_toStartOf="@+id/imgCheck"
+        app:layout_constraintStart_toEndOf="@+id/imgItem"
+        app:layout_constraintTop_toTopOf="@+id/imgItem"
+        tools:text="Title of Item" />
+
+    <ImageView
+        android:id="@+id/imgCheck"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:padding="@dimen/_4sdp"
+        android:src="@drawable/ic_uncheck"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

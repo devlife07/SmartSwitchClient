@@ -1,0 +1,123 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+android {
+    namespace "com.vt.smart.switchapp"
+    compileSdk 36
+    defaultConfig {
+        applicationId "com.vt.smart.switch"
+        minSdk 26
+        targetSdk 36
+        versionCode 13
+        versionName "1.1.3"
+//        versionCode 55555
+//        versionName "1.0.55555"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        setProperty("archivesBaseName", "Smart Transfer" + "_vc_" + versionCode + "_vn_" + versionName + "_")
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        buildConfig true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'StringFormatInvalid'
+    }
+}
+
+dependencies {
+//    implementation project(path: ':ventechinapp')
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.core:core-ktx:1.11.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.activity:activity:1.10.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    implementation 'com.google.zxing:core:3.5.2'  // ZXing for QR generation
+//    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.0'
+
+//    implementation 'com.google.mlkit:barcode-scanning:17.2.0'
+    // CameraX Camera2 Extensions
+    implementation 'androidx.camera:camera-camera2:1.5.3'
+
+    // CameraX View for Preview Use
+    implementation 'androidx.camera:camera-view:1.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    //Admob
+//    implementation 'com.google.android.gms:play-services-ads:23.4.0'
+    //loading
+//    implementation 'cc.cloudist.acplibrary:library:1.2.1'
+//    implementation 'com.kaopiz:kprogresshud:1.2.0'
+    implementation("com.cardinfolink.smart.pos:kprogresshud:1.0")
+    implementation 'com.google.android.play:review-ktx:2.0.1'
+    implementation 'com.google.android.play:feature-delivery-ktx:2.1.0'
+    // For Kotlin users, also import the Kotlin extensions library for Play In-App Update:
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
+    implementation platform('com.google.firebase:firebase-bom:34.8.0')
+    // Add the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-config'
+    //permission handler
+    implementation 'com.nabinbhandari.android:permissions:4.0.0'
+
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    //Google Consent Form
+//    implementation 'com.google.android.ads.consent:consent-library:1.0.8'
+    implementation 'com.google.android.ump:user-messaging-platform:3.0.0'
+    //Admob
+    implementation 'com.google.android.gms:play-services-ads:24.7.0'
+    implementation 'com.yandex.android:mobileads:7.12.0'
+    implementation ("com.android.billingclient:billing-ktx:9.1.0")
+
+
+}

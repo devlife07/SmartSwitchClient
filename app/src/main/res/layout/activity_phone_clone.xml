@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="PhoneCloneBinding">
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <LinearLayout
+            android:id="@+id/banner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/customToolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/banner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/ic_corner_round"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customToolbar">
+
+            <TextView
+                android:id="@+id/total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Storage"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="18sp"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@+id/percentagefree"
+                app:layout_constraintStart_toEndOf="@+id/percentagefree"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/usedSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70 GB"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/ic_corner_round"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                app:layout_constraintStart_toStartOf="@+id/total_title"
+                app:layout_constraintEnd_toStartOf="@+id/freeSpace"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/usedSpace"
+                app:layout_constraintStart_toStartOf="@+id/usedSpace"
+                app:layout_constraintEnd_toEndOf="@+id/usedSpace"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Used"
+                android:textColor="@color/cardview_dark_background"/>
+            <TextView
+                android:id="@+id/freeSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30 GB"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_1sdp"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:textSize="12sp"
+                android:background="@drawable/ic_corner_round"
+                android:backgroundTint="@color/blacks"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                app:layout_constraintEnd_toEndOf="@+id/total_title"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/freeSpace"
+                app:layout_constraintStart_toStartOf="@+id/freeSpace"
+                app:layout_constraintEnd_toEndOf="@+id/freeSpace"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Free"
+                android:textColor="@color/cardview_dark_background"/>
+            <TextView
+                android:id="@+id/percentagefree"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="80%\nUsed"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="visible"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:background="@drawable/storage_capacity"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/oldPhoneLayout"
+            android:layout_width="160dp"
+            android:layout_height="200dp"
+            android:background="@drawable/old_device"
+            android:elevation="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toStartOf="@+id/newPhoneLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/phone_clone"
+            app:layout_constraintTop_toBottomOf="@+id/toplayout"
+            app:layout_constraintWidth_percent="0.43"/>
+        <ImageView
+            android:id="@+id/newPhoneLayout"
+            android:layout_width="160dp"
+            android:layout_height="200dp"
+            android:background="@drawable/new_device"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toplayout"
+            app:layout_constraintStart_toEndOf="@+id/oldPhoneLayout"
+            app:layout_constraintWidth_percent="0.43">
+
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

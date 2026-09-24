@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="LoadAllDataBinding">
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.08"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/poppins_semibold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/title"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/backarrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="@dimen/_10sdp"
+                android:background="@drawable/arrorw_back_svg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_10sdp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/banner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toplayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banner_layout">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/banner_layout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_images"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_music"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/images_alldata">
+                        <!-- TextView Image Size -->
+                        <TextView
+                            android:id="@+id/tv_images_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text=""
+                            android:textSize="@dimen/_9ssp"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_images" />
+
+                        <!-- Checkbox Images -->
+                        <CheckBox
+                            android:id="@+id/checkbox_images"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_music"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_apps"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/layout_images"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/music_alldata">
+                        <TextView
+                            android:id="@+id/tv_music_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:text=""
+                            android:textSize="@dimen/_9ssp"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_music"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/checkbox_music"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:checked="true"
+                            android:layout_gravity="center_vertical"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_apps"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/layout_music"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/apps_alldata">
+
+                        <TextView
+                            android:id="@+id/tv_apps_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:text=""
+                            android:textSize="@dimen/_9ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_apps" />
+
+                        <CheckBox
+                            android:id="@+id/checkbox_apps"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:checked="true"
+                            android:layout_gravity="center_vertical"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_videos"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_files"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_images"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/videos_alldata">
+                        <!-- TextView Image Size -->
+                        <TextView
+                            android:id="@+id/tv_videos_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textSize="@dimen/_9ssp"
+                            android:text=""
+                            app:layout_constraintTop_toBottomOf="@+id/tv_images" />
+
+                        <!-- Checkbox Images -->
+                        <CheckBox
+                            android:id="@+id/checkbox_videos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_files"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_apps"
+                        app:layout_constraintTop_toTopOf="@+id/layout_videos"
+                        app:layout_constraintBottom_toBottomOf="@+id/layout_videos"
+                        app:layout_constraintStart_toEndOf="@+id/layout_videos"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/files_alldata">
+                        <TextView
+                            android:id="@+id/tv_files_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:textSize="@dimen/_9ssp"
+                            android:text=""
+                            app:layout_constraintTop_toBottomOf="@+id/tv_music"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/checkbox_files"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:checked="true"
+                            android:layout_gravity="center_vertical"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_contacts"
+                        android:layout_width="110dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintWidth_percent="0.3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/layout_videos"
+                        app:layout_constraintBottom_toBottomOf="@+id/layout_videos"
+                        app:layout_constraintStart_toEndOf="@+id/layout_files"
+                        android:elevation="@dimen/_2sdp"
+                        android:background="@drawable/contacts_alldata">
+
+                        <TextView
+                            android:id="@+id/tv_contacts_size"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.85"
+                            android:gravity="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:textSize="@dimen/_9ssp"
+                            android:text=""
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_apps" />
+
+                        <CheckBox
+                            android:id="@+id/checkbox_contacts"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:checked="true"
+                            android:layout_gravity="center_vertical"
+                            android:button="@drawable/selection_checkbox"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ebnnn"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintWidth_percent="0.9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_contacts">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:background="@color/white"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.12">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintWidth_percent="0.4"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/stroke_new"
+                    android:text="Cancel"
+                    android:visibility="gone"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/app_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_share"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_share"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintWidth_percent="0.7"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_corner_round_new"
+                    android:text="Send"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/app_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/btn_cancel" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/iv_total_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_storage"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+
+            <TextView
+                android:id="@+id/tv_total_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_total_size"
+                app:layout_constraintEnd_toEndOf="@+id/iv_total_size"
+                app:layout_constraintStart_toStartOf="@+id/iv_total_size"
+                app:layout_constraintTop_toTopOf="@+id/iv_total_size" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

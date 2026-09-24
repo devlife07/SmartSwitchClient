@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="FileTransferBinding">
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/customToolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/banner_ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:id="@+id/banner_ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/main_tab_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customToolbar">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/percentagefree"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/white"
+                android:text="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Space"
+                android:textSize="12sp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintStart_toEndOf="@+id/percentagefree"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/light_gray"/>
+            <TextView
+                android:id="@+id/photos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photos"
+                android:textSize="11sp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                app:drawableStartCompat="@drawable/round_circle"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                app:layout_constraintStart_toEndOf="@+id/percentagefree"
+                app:layout_constraintEnd_toStartOf="@+id/videos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Videos"
+                android:textSize="11sp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                app:drawableStartCompat="@drawable/round_circle"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                app:layout_constraintStart_toEndOf="@+id/photos"
+                app:layout_constraintEnd_toStartOf="@+id/music"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Music"
+                android:textSize="11sp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                app:drawableStartCompat="@drawable/round_circle"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                app:layout_constraintStart_toEndOf="@+id/videos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/percentagefree"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="80%\nUsed"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="visible"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/storage_sample"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sendlayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_corner_round"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/receivelayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toplayout"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageView
+                android:id="@+id/circle1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circular_orange_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/send"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/circular_orange"
+                android:src="@drawable/old_phone"
+                app:layout_constraintBottom_toBottomOf="@+id/circle1"
+                app:layout_constraintEnd_toEndOf="@+id/circle1"
+                app:layout_constraintStart_toStartOf="@+id/circle1"
+                app:layout_constraintTop_toTopOf="@+id/circle1" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintStart_toStartOf="@+id/send"
+                app:layout_constraintEnd_toEndOf="@+id/send"
+                app:layout_constraintTop_toTopOf="@+id/send"
+                app:layout_constraintBottom_toBottomOf="@+id/send"
+                android:src="@drawable/send_new"/>
+
+            <TextView
+                android:id="@+id/sendTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Send"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/circle1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/senddescription"
+                app:layout_constraintTop_toBottomOf="@+id/circle1" />
+
+            <TextView
+                android:id="@+id/senddescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="Send Data to other phone"
+                android:textSize="13sp"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/circle1"
+                app:layout_constraintTop_toBottomOf="@+id/sendTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.96" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/receivelayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_corner_round"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintTop_toBottomOf="@+id/sendlayout"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageView
+                android:id="@+id/circle2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circular_orange_light"
+                android:backgroundTint="#C8FFD4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/clone"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/circular_orange"
+                android:backgroundTint="#C8FFD4"
+                android:src="@drawable/new_phone"
+                app:layout_constraintBottom_toBottomOf="@+id/circle2"
+                app:layout_constraintEnd_toEndOf="@+id/circle2"
+                app:layout_constraintStart_toStartOf="@+id/circle2"
+                app:layout_constraintTop_toTopOf="@+id/circle2" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintStart_toStartOf="@+id/clone"
+                app:layout_constraintEnd_toEndOf="@+id/clone"
+                app:layout_constraintTop_toTopOf="@+id/clone"
+                app:layout_constraintBottom_toBottomOf="@+id/clone"
+                android:src="@drawable/receive_new"/>
+            <TextView
+                android:id="@+id/cloneTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Receive"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/circle2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/clonedescription"
+                app:layout_constraintTop_toBottomOf="@+id/circle2" />
+
+            <TextView
+                android:id="@+id/clonedescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="Receive Data from other phone"
+                android:textSize="13sp"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/circle2"
+                app:layout_constraintTop_toBottomOf="@+id/cloneTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_percent="0.96" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

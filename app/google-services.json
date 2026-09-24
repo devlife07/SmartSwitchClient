@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2435660413",
+    "project_id": "smart-switch-client",
+    "storage_bucket": "smart-switch-client.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2435660413:android:e0e128ee9596ac447c0f14",
+        "android_client_info": {
+          "package_name": "com.vt.smart.switch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7NlFTpUX5KSm4an3wfAlxSaIEU8zb-Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/splash_bg">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.75"
+        android:background="@drawable/splash_bg_round"/>
+
+    <TextView
+        android:id="@+id/appVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textColor="@color/app_color_darkest"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/description" />
+
+    <LinearLayout
+        android:id="@+id/banner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/transfer"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/splash_icon"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/_22ssp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:letterSpacing="0.05"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="@string/splash_title"/>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/transfer"
+        android:gravity="center"
+        android:text="@string/description"/>
+    <TextView
+        android:id="@+id/tv_privacyPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/_5sdp"
+        android:text="@string/pp"
+        android:textColor="@color/light"
+        android:layout_marginTop="@dimen/_9sdp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="@id/btn_start"
+        app:layout_constraintStart_toStartOf="@id/btn_start" />
+
+    <TextView
+        android:id="@+id/btn_start"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/agree_and_continue"
+        android:background="@drawable/ic_corner_round"
+        app:backgroundTint="@color/app_color"
+        android:visibility="invisible"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <FrameLayout
+        android:id="@+id/consentForm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:touchscreenBlocksFocus="true"
+        android:focusableInTouchMode="false"
+        android:filterTouchesWhenObscured="false"
+        android:visibility="gone"
+        android:background="@color/white">
+        <include
+            android:id="@+id/grantForm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/bottom_sheet"/>
+    </FrameLayout>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start"
+        app:layout_constraintEnd_toEndOf="@+id/btn_start"
+        app:layout_constraintStart_toStartOf="@+id/btn_start"
+        app:layout_constraintTop_toTopOf="@+id/btn_start" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

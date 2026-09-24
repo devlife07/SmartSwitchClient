@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer Stroke -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#4DFF6E6D" />
+        </shape>
+    </item>
+
+    <!-- Inner Stroke -->
+    <item
+        android:left="6dp"
+        android:top="6dp"
+        android:right="6dp"
+        android:bottom="6dp">
+        <shape android:shape="oval">
+            <solid android:color="#66FF6E6D" />
+        </shape>
+    </item>
+
+    <!-- Main Circle with Gradient -->
+    <item
+        android:left="12dp"
+        android:top="12dp"
+        android:right="12dp"
+        android:bottom="12dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%"
+                android:startColor="#FF3A38"
+            android:centerColor="#FF3A38"
+            android:endColor="#FA5F5E"
+            android:useLevel="false" />
+        </shape>
+    </item>
+
+</layer-list>

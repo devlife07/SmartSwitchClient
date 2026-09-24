@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ProPanelBinding">
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/topimg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/premium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:scaleType="centerCrop"
+            android:src="@drawable/splash_transfer" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/topimg"
+            app:layout_constraintTop_toBottomOf="@+id/topimg"/>
+        <ImageView
+            android:id="@+id/cross"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_cross"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/smart_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/premium"
+            android:textSize="24sp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/app_color"/>
+        <TextView
+            android:id="@+id/titledetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_detail"
+            android:textAlignment="center"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:textSize="13sp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/app_color"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/titledetail"
+            app:layout_constraintBottom_toTopOf="@+id/purchase">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_5sdp"
+                android:layout_gravity="center">
+                <RadioButton
+                    android:id="@+id/weekly"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.85"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly \n $"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textSize="16sp"
+                    android:button="@null"
+                    android:visibility="gone"
+                    android:buttonTint="@color/transparent"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingVertical="@dimen/_7sdp"
+                    android:paddingHorizontal="@dimen/_7sdp"
+                    android:background="@drawable/stroke_gray"/>
+
+                <TextView
+                    android:id="@+id/basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_round_black"
+                    android:text="Basic"
+                    android:visibility="gone"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/weekly"
+                    app:layout_constraintStart_toStartOf="@+id/weekly"
+                    app:layout_constraintEnd_toEndOf="@+id/weekly"
+                    app:layout_constraintBottom_toTopOf="@+id/weekly"/>
+
+                <RadioButton
+                    android:id="@+id/monthly"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.85"
+                    android:layout_height="@dimen/_65sdp"
+                    android:text="Monthly \n $"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:button="@null"
+                    android:textAlignment="center"
+                    android:buttonTint="@color/transparent"
+                    app:layout_constraintTop_toBottomOf="@+id/weekly"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingHorizontal="@dimen/_7sdp"
+                    android:background="@drawable/stroke_orange"/>
+
+                <TextView
+                    android:id="@+id/standard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_round_orange"
+                    android:text="Best Offer"
+                    android:visibility="gone"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/monthly"
+                    app:layout_constraintStart_toStartOf="@+id/monthly"
+                    app:layout_constraintEnd_toEndOf="@+id/monthly"
+                    app:layout_constraintBottom_toTopOf="@+id/monthly"/>
+
+                <RadioButton
+                    android:id="@+id/yearly"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.85"
+                    android:layout_height="@dimen/_65sdp"
+                    android:text="Yearly \n $"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:button="@null"
+                    android:textAlignment="center"
+                    android:buttonTint="@color/transparent"
+                    app:layout_constraintTop_toBottomOf="@+id/monthly"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingHorizontal="@dimen/_7sdp"
+                    android:background="@drawable/stroke_gray"/>
+
+                <TextView
+                    android:id="@+id/once"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_round_black"
+                    android:text="Popular"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="@+id/yearly"
+                    app:layout_constraintStart_toStartOf="@+id/yearly"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+        <TextView
+            android:id="@+id/purchase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_semibold"
+            android:background="@drawable/ic_round_button_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@+id/detail_bottom"
+            android:paddingVertical="@dimen/_8sdp"
+            android:backgroundTint="@color/app_color"/>
+        <TextView
+            android:id="@+id/detail_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_commitment"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/terms"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Terms of use  |"
+            android:gravity="end"
+            app:layout_constraintWidth_percent="0.4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/privacy"
+            android:textSize="12sp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/privacy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.4"
+            android:text="Privacy Policy"
+            android:gravity="start"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/terms"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/gray"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

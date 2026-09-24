@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_name"
+        android:paddingTop="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_7sdp"
+        android:drawablePadding="@dimen/_15sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:drawableStartCompat="@drawable/wifi_icon_svg" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/status"
+        app:layout_constraintStart_toStartOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="@+id/status"
+        android:background="@color/light_gray"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
