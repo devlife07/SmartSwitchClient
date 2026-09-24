@@ -14,6 +14,13 @@ class MySocketHandler {
 
         @Synchronized
         fun setSocket(socket: Socket) {
+            val previous = Companion.socket
+            if (previous != null && previous !== socket) {
+                try {
+                    previous.close()
+                } catch (_: Exception) {
+                }
+            }
             Companion.socket = socket
         }
 

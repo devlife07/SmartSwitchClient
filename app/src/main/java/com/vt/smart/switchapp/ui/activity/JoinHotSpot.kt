@@ -28,6 +28,7 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.vt.smart.switchapp.connectivity.HotspotNetworkHolder
 import com.vt.smart.switchapp.connectivity.MyClient
 import com.vt.smart.switchapp.databinding.ActivityJoinHotSpotBinding
 import com.vt.smart.switchapp.ui.interfaces.ConnectionInterface
@@ -128,6 +129,7 @@ class JoinHotSpot : AppCompatActivity(), ConnectionInterface {
                 super.onAvailable(network)
                 // Critical: Bind the app to this specific Wi-Fi network
                 connectivityManager.bindProcessToNetwork(network)
+                HotspotNetworkHolder.onNetworkAvailable(network)
 
                 // Wait slightly for DHCP to assign IP
                 mainHandler.postDelayed({
@@ -138,6 +140,7 @@ class JoinHotSpot : AppCompatActivity(), ConnectionInterface {
 
             override fun onUnavailable() {
                 super.onUnavailable()
+                HotspotNetworkHolder.release()
                 // NetworkCallback methods run on a binder thread, not the main thread
                 runOnUiThread {
                     dismissProgressDialog()
@@ -145,7 +148,11 @@ class JoinHotSpot : AppCompatActivity(), ConnectionInterface {
                 }
             }
         }
+        // release a request left over from an older attempt before making a new one
+        HotspotNetworkHolder.release()
         networkCallback = callback
+        // keep the request alive outside this activity: unregistering it drops the hotspot
+        HotspotNetworkHolder.hold(this, connectivityManager, callback)
         connectivityManager.requestNetwork(request, callback)
     }
 
@@ -166,7 +173,19 @@ class JoinHotSpot : AppCompatActivity(), ConnectionInterface {
     }
 
     private fun initiateClient() {
-        val dhcp = wifiManager.dhcpInfo.serverAddress
+        if (isFinishing || isDestroyed) return
+        // Prefer the gateway of the hotspot network itself: on phones that stay on
+        // home Wi-Fi at the same time, dhcpInfo can point to the home router.
+        val gateway = HotspotNetworkHolder.gatewayAddress()
+        @Suppress("DEPRECATION")
+        val dhcp = wifiManager.dhcpInfo?.serverAddress ?: 0
+        if (gateway != null) {
+            if (clientStarted) return
+            clientStarted = true
+            Log.e("MyClientServer", "Connecting to gateway IP: ${gateway.hostAddress}")
+            MyClient(gateway, this@JoinHotSpot).start()
+            return
+        }
         if (dhcp == 0) {
             if (dhcpRetries >= MyConstant.DHCP_MAX_RETRIES) {
                 dismissProgressDialog()
@@ -266,18 +285,16 @@ class JoinHotSpot : AppCompatActivity(), ConnectionInterface {
 
     override fun onDestroy() {
         mainHandler.removeCallbacksAndMessages(null)
-        networkCallback?.let {
-            try {
-                val connectivityManager =
-                    getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-                connectivityManager.unregisterNetworkCallback(it)
-            } catch (e: IllegalArgumentException) {
-                // already unregistered
-            }
+        // If we connected to the sender, the hotspot request must stay registered
+        // until the transfer ends (TransferManager releases it). Otherwise the
+        // phone would leave the hotspot and the transfer would break.
+        val connected = com.vt.smart.switchapp.connectivity.MySocketHandler.getSocket() != null
+        if (!connected && HotspotNetworkHolder.isHolding(networkCallback)) {
+            HotspotNetworkHolder.release()
         }
         networkCallback = null
         progressDialog?.dismiss()
         progressDialog = null
         super.onDestroy()
     }
-}
+}

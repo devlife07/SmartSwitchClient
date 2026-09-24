@@ -219,6 +219,11 @@ class ExploreDevicesNearby : AppCompatActivity(), ConnectionInterface {
     }
 
     override fun onConnectionSuccessful() {
+        runOnUiThread { openTransferScreen() }
+    }
+
+    private fun openTransferScreen() {
+        if (isFinishing || isDestroyed) return
         if (user == "sender") {
             Intent(
                 this,
@@ -241,6 +246,9 @@ class ExploreDevicesNearby : AppCompatActivity(), ConnectionInterface {
     }
 
     override fun onConnectionFailed(reason: String) {
-        Toast.makeText(this, "Connection failed: $reason", Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            if (isFinishing || isDestroyed) return@runOnUiThread
+            Toast.makeText(this, "Connection failed: $reason", Toast.LENGTH_SHORT).show()
+        }
     }
-}
+}

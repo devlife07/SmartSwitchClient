@@ -106,12 +106,28 @@ class MakeHotSpot : AppCompatActivity(), ConnectionInterface {
         MyServer.startListening(this)
     }
 
+    // Called from the MyServer worker thread -> hop to the main thread
     override fun onConnectionSuccessful() {
-        startActivity(Intent(this, ActivitySender::class.java))
-        finish()
+        runOnUiThread {
+            if (isFinishing || isDestroyed) return@runOnUiThread
+            startActivity(Intent(this, ActivitySender::class.java))
+            finish()
+        }
     }
 
     override fun onConnectionFailed(reason: String) {
-        Toast.makeText(this, "Connection failed: $reason", Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            if (isFinishing || isDestroyed) return@runOnUiThread
+            Toast.makeText(this, "Connection failed: $reason", Toast.LENGTH_SHORT).show()
+        }
     }
-}
+
+    override fun onDestroy() {
+        // Stop waiting for a receiver only if nobody connected yet. The hotspot
+        // reservation itself is kept until the transfer is done.
+        if (com.vt.smart.switchapp.connectivity.MySocketHandler.getSocket() == null) {
+            MyServer.stopListening()
+        }
+        super.onDestroy()
+    }
+}

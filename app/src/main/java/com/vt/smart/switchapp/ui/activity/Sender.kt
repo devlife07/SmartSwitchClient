@@ -62,7 +62,6 @@ class Sender : AppCompatActivity() {
                 return
             }
 
-//            TransferForegroundService.start(applicationContext)
             TransferThread().start()
         } catch (e: Exception) {
             Log.e(TAG, "Error preparing files", e)
@@ -158,13 +157,11 @@ class Sender : AppCompatActivity() {
                     Log.e(TAG, "Closing error", e)
                 }
                 MySocketHandler.clearSocket()
-//                TransferForegroundService.stop(applicationContext)
             }
         }
     }
 
     override fun onDestroy() {
-//        TransferForegroundService.stop(applicationContext)
         super.onDestroy()
     }
 

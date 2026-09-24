@@ -12,7 +12,7 @@ object MyConstant {
     const val PORT = 8080
     const val TRANSFER_SO_TIMEOUT_MS = 30_000
     const val CONNECT_TIMEOUT_MS = 5_000
-    const val CLIENT_CONNECT_RETRIES = 3
+    const val CLIENT_CONNECT_RETRIES = 5
     const val DHCP_RETRY_DELAY_MS = 1_500L
     const val DHCP_MAX_RETRIES = 10
     var reservationOfHotspot: WifiManager.LocalOnlyHotspotReservation? = null

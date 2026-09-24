@@ -19,6 +19,7 @@ import com.vt.smart.switchapp.ui.models.HistoryModel
 import com.vt.smart.switchapp.ui.adapters.HistoryAdapter
 import com.vt.smart.switchapp.AppUtils.formatDateForGroup
 import com.vt.smart.switchapp.BuildConfig
+import com.vt.smart.switchapp.connectivity.TransferProtocol
 import java.io.File
 
 class ReceivedFilesActivity : AppCompatActivity() {
@@ -57,17 +58,12 @@ class ReceivedFilesActivity : AppCompatActivity() {
 
             }
         }
-        val folder =
-            File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                "/Phone Switch Clone"
-            )
-        val files = folder.listFiles()
-        if (files == null) {
-            binding.noItemFound.visibility = View.VISIBLE
-        } else
-            binding.noItemFound.visibility = View.GONE
-        files?.forEach {
+        // same folder(s) the receiver writes into (Downloads/Smart Switch)
+        val files = TransferProtocol.allReceiveDirectories(this)
+            .flatMap { dir -> dir.listFiles()?.toList() ?: emptyList() }
+            .filter { it.isFile && !it.name.startsWith(".") }
+        binding.noItemFound.visibility = if (files.isEmpty()) View.VISIBLE else View.GONE
+        files.forEach {
             list.add(HistoryModel(it.name, it.absolutePath, it.lastModified()))
         }
         list.sortByDescending { it.dateModified }
@@ -107,4 +103,4 @@ class ReceivedFilesActivity : AppCompatActivity() {
                 .show()
         }
     }
-}
+}
